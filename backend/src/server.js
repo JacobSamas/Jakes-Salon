@@ -2,11 +2,11 @@ const app = require('./app');
 const sequelize = require('./config/db');
 const PORT = process.env.PORT || 5000;
 
-// Import models to ensure they are registered with Sequelize
 require('./models/User');
 require('./models/Appointment');
+require('./models/Service'); 
 
-sequelize.sync({ alter: true }) // Sync models with the database
+sequelize.sync({ alter: true }) 
     .then(() => {
         console.log('Database synced successfully!');
         app.listen(PORT, () => {
