@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const UserModal = ({ user, onClose, onSave }) => {
+const ServiceModal = ({ service, onClose, onSave }) => {
     const [formData, setFormData] = useState({
-      name: user?.name || "",
-      email: user?.email || "",
-      role: user?.role || "customer",
+      name: service?.name || "",
+      description: service?.description || "",
+      price: service?.price || 0,
+      duration: service?.duration || 30,
+      discount: service?.discount || 0,
     });
   
     const handleSubmit = async (e) => {
       e.preventDefault();
       // Send data to backend (add or update)
-      const method = user ? "PUT" : "POST";
-      const url = user
-        ? `http://localhost:5001/api/users/${user.id}`
-        : "http://localhost:5001/api/users";
+      const method = service ? "PUT" : "POST";
+      const url = service
+        ? `http://localhost:5001/api/services/${service.id}`
+        : "http://localhost:5001/api/services";
   
       const res = await fetch(url, {
         method,
@@ -38,7 +40,7 @@ const UserModal = ({ user, onClose, onSave }) => {
           className="bg-card text-card-foreground p-6 rounded-lg shadow-lg w-96"
         >
           <h2 className="text-xl font-bold mb-4">
-            {user ? "Edit User" : "Add User"}
+            {service ? "Edit Service" : "Add Service"}
           </h2>
           <input
             type="text"
@@ -50,26 +52,44 @@ const UserModal = ({ user, onClose, onSave }) => {
             className="w-full p-2 mb-4 border rounded"
             required
           />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
+          <textarea
+            placeholder="Description"
+            value={formData.description}
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setFormData({ ...formData, description: e.target.value })
             }
             className="w-full p-2 mb-4 border rounded"
             required
           />
-          <select
-            value={formData.role}
+          <input
+            type="number"
+            placeholder="Price"
+            value={formData.price}
             onChange={(e) =>
-              setFormData({ ...formData, role: e.target.value })
+              setFormData({ ...formData, price: parseFloat(e.target.value) })
             }
             className="w-full p-2 mb-4 border rounded"
-          >
-            <option value="customer">Customer</option>
-            <option value="admin">Admin</option>
-          </select>
+            required
+          />
+          <input
+            type="number"
+            placeholder="Duration (mins)"
+            value={formData.duration}
+            onChange={(e) =>
+              setFormData({ ...formData, duration: parseInt(e.target.value) })
+            }
+            className="w-full p-2 mb-4 border rounded"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Discount (%)"
+            value={formData.discount}
+            onChange={(e) =>
+              setFormData({ ...formData, discount: parseInt(e.target.value) })
+            }
+            className="w-full p-2 mb-4 border rounded"
+          />
           <div className="flex justify-end space-x-2">
             <button
               type="button"
@@ -90,5 +110,5 @@ const UserModal = ({ user, onClose, onSave }) => {
     );
   };
   
-  export default UserModal;
+  export default ServiceModal;
   
