@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // For client-side navigation
+import { useRouter } from "next/navigation"; 
 import {
   FiHome,
   FiUsers,
@@ -13,10 +13,9 @@ import {
 
 const Sidebar = () => {
   const [active, setActive] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(null); // `null` as the initial state to handle loading
+  const [isLoggedIn, setIsLoggedIn] = useState(null); 
   const router = useRouter();
 
-  // Check for token to verify login status
   useEffect(() => {
     const token = document.cookie
       .split("; ")
@@ -25,7 +24,7 @@ const Sidebar = () => {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
-      router.push("/login"); // Redirect to login if not logged in
+      router.push("/login"); 
     }
   }, [router]);
 
@@ -40,7 +39,6 @@ const Sidebar = () => {
     { name: "Appointments", path: "/appointments", icon: <FiCalendar /> },
   ];
 
-  // Show a loading state while checking login status
   if (isLoggedIn === null) {
     return (
       <div className="flex items-center justify-center h-screen bg-background text-muted">
@@ -50,7 +48,7 @@ const Sidebar = () => {
   }
 
   if (!isLoggedIn) {
-    return null; // Sidebar is hidden if the user is not logged in
+    return null;
   }
 
   return (
@@ -61,9 +59,9 @@ const Sidebar = () => {
       <nav className="flex flex-col mt-4 space-y-2">
         {menuItems.map((item) => (
           <Link
-            key={item.path} // Ensure the key is unique and consistent
+            key={item.path}
             href={item.path}
-            onClick={() => setActive(item.path)} // Avoid redundant function wrapping
+            onClick={() => setActive(item.path)} 
             className={`flex items-center px-4 py-3 text-lg hover:bg-muted rounded-lg transition ${
               active === item.path ? "bg-primary text-primary-foreground" : ""
             }`}
@@ -78,7 +76,7 @@ const Sidebar = () => {
           onClick={() => {
             document.cookie =
               "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            router.push("/login"); // Redirect after clearing token
+            router.push("/login");
           }}
           className="flex items-center w-full px-4 py-3 text-lg text-destructive hover:bg-destructive hover:text-destructive-foreground rounded-lg transition"
         >
