@@ -17,9 +17,12 @@ app.use(errorHandler);
 const authRoutes = require('./routes/authRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
+const dashboardRoutes = require("./routes/dashboardRoutes");
+
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/services', serviceRoutes);
+app.use("/api", dashboardRoutes); 
 
 // Basic Route
 app.get('/', (req, res) => {
