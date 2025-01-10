@@ -3,6 +3,7 @@ import AboutSection from "@/components/AboutSection";
 import ServiceHighlights from "@/components/ServiceHighlights";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactCTASection from "@/components/ContactCTASection";
+import NewsletterSection from "@/components/NewsletterSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ServiceHighlights />
       <TestimonialsSection />
       <ContactCTASection />
+      <NewsletterSection />
     </div>
   );
 }
