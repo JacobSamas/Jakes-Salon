@@ -74,7 +74,7 @@ const Navbar = () => {
             href="/booking"
             className={`px-4 py-2 rounded transition ${
               scrolled
-                ? "bg-white text-primary"
+                ? "bg-white text-primary  hover:bg-secondary hover:text-white"
                 : "bg-accent text-background hover:bg-secondary hover:text-white"
             }`}
           >
@@ -89,7 +89,7 @@ const Navbar = () => {
                 onClick={handleLogout}
                 className={`px-4 py-2 rounded transition ${
                   scrolled
-                    ? "bg-white text-primary"
+                    ? "bg-white text-primary  hover:bg-secondary hover:text-white"
                     : "bg-accent text-background hover:bg-secondary hover:text-white"
                 }`}
               >
@@ -101,7 +101,7 @@ const Navbar = () => {
               href="/login"
               className={`px-4 py-2 rounded transition ${
                 scrolled
-                  ? "bg-white text-primary"
+                  ? "bg-white text-primary  hover:bg-secondary hover:text-white"
                   : "bg-accent text-background hover:bg-secondary hover:text-white"
               }`}
             >
