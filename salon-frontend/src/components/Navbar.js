@@ -46,35 +46,37 @@ const Navbar = () => {
         scrolled ? "bg-primary shadow-lg" : "bg-background"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between p-4">
+      <div
+        className={`container mx-auto flex items-center justify-between p-4 ${
+          scrolled ? "text-white" : "text-primary-foreground"
+        }`}
+      >
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-primary-foreground">
+        <h1 className="text-2xl font-bold">
           <Link href="/">Jakes Salon</Link>
         </h1>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/" className="text-primary-foreground hover:underline">
+          <Link href="/" className="hover:underline">
             Home
           </Link>
-          <Link
-            href="/services"
-            className="text-primary-foreground hover:underline"
-          >
+          <Link href="/services" className="hover:underline">
             Services
           </Link>
-          <Link href="/about" className="text-primary-foreground hover:underline">
+          <Link href="/about" className="hover:underline">
             About
           </Link>
-          <Link
-            href="/contact"
-            className="text-primary-foreground hover:underline"
-          >
+          <Link href="/contact" className="hover:underline">
             Contact
           </Link>
           <Link
             href="/booking"
-            className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+            className={`px-4 py-2 rounded transition ${
+              scrolled
+                ? "bg-white text-primary"
+                : "bg-accent text-background hover:bg-secondary hover:text-white"
+            }`}
           >
             Book Now
           </Link>
@@ -82,10 +84,14 @@ const Navbar = () => {
           {/* Login/Logout Button */}
           {isLoggedIn ? (
             <div className="flex items-center space-x-4">
-              <span className="text-primary-foreground">Hi, {userName}</span>
+              <span>Hi, {userName}</span>
               <button
                 onClick={handleLogout}
-                className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+                className={`px-4 py-2 rounded transition ${
+                  scrolled
+                    ? "bg-white text-primary"
+                    : "bg-accent text-background hover:bg-secondary hover:text-white"
+                }`}
               >
                 Logout
               </button>
@@ -93,7 +99,11 @@ const Navbar = () => {
           ) : (
             <Link
               href="/login"
-              className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+              className={`px-4 py-2 rounded transition ${
+                scrolled
+                  ? "bg-white text-primary"
+                  : "bg-accent text-background hover:bg-secondary hover:text-white"
+              }`}
             >
               Login
             </Link>
@@ -102,7 +112,9 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-primary-foreground"
+          className={`md:hidden ${
+            scrolled ? "text-white" : "text-primary-foreground"
+          }`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <span>&#x2715;</span> : <span>&#9776;</span>}
@@ -135,7 +147,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/booking"
-                  className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+                  className="bg-white text-primary px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
                   onClick={() => setIsOpen(false)}
                 >
                   Book Now
@@ -148,14 +160,14 @@ const Navbar = () => {
                       handleLogout();
                       setIsOpen(false);
                     }}
-                    className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+                    className="bg-white text-primary px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
                   >
                     Logout
                   </button>
                 ) : (
                   <Link
                     href="/login"
-                    className="bg-accent text-background px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
+                    className="bg-white text-primary px-4 py-2 rounded hover:bg-secondary hover:text-white transition"
                     onClick={() => setIsOpen(false)}
                   >
                     Login
