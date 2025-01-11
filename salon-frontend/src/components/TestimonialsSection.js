@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { FaUser } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -46,11 +47,7 @@ const TestimonialsSection = () => {
               transition={{ duration: 0.8, delay: testimonial.id * 0.2 }}
             >
               <div className="mb-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full mx-auto"
-                />
+                <FaUser className="text-4xl text-primary mx-auto" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{testimonial.name}</h3>
               <p className="text-gray-600">{testimonial.review}</p>
