@@ -58,8 +58,8 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/" className="hover:underline">
-            Home
+          <Link href="/profile" className="hover:underline">
+            Profile
           </Link>
           <Link href="/services" className="hover:underline">
             Services
@@ -125,8 +125,8 @@ const Navbar = () => {
           <div className="absolute top-16 left-0 w-full bg-primary text-white shadow-lg md:hidden">
             <ul className="flex flex-col space-y-4 p-4">
               <li>
-                <Link href="/" onClick={() => setIsOpen(false)}>
-                  Home
+                <Link href="/profile" onClick={() => setIsOpen(false)}>
+                  Profile
                 </Link>
               </li>
               <li>
